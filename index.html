@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Coding with Collins the Tech Boy</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1e5799 0%, #207cca 51%, #2989d8 100%, #7db9e8 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: rgba(46, 125, 50, 0.9);
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .logo span {
+            color: #ffeb3b;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 22px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn:hover {
+            background-color: #45a049;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Quotes Section */
+        .quotes-section {
+            padding: 60px 0;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2E8B57;
+            font-size: 36px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: #4CAF50;
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+        
+        .quotes-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .quote-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid #4CAF50;
+        }
+        
+        .quote-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .quote-text {
+            font-style: italic;
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .quote-author {
+            text-align: right;
+            font-weight: 600;
+            color: #2E8B57;
+        }
+        
+        /* Courses Section */
+        .courses-section {
+            padding: 60px 0;
+            margin-bottom: 40px;
+        }
+        
+        .courses-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .course-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .course-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .course-content {
+            padding: 25px;
+        }
+        
+        .course-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #2E8B57;
+        }
+        
+        .course-text {
+            color: #555;
+            margin-bottom: 15px;
+        }
+        
+        /* Gallery Section */
+        .gallery-section {
+            padding: 60px 0;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a3c1a;
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+            padding: 0 15px;
+        }
+        
+        .footer-column h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #ddd;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column a:hover {
+            color: #4CAF50;
+        }
+        
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">Learn Coding with <span>Collins</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#quotes">Quotes</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Unlock Your Coding Potential</h1>
+            <p>Join Collins the Tech Boy on an exciting journey to master programming and build amazing digital solutions.</p>
+            <a href="#courses" class="btn">Start Learning Today</a>
+        </div>
+    </section>
+
+    <!-- Quotes Section -->
+    <section class="quotes-section" id="quotes">
+        <div class="container">
+            <h2 class="section-title">Coding Wisdom</h2>
+            <div class="quotes-container">
+                <div class="quote-card">
+                    <p class="quote-text">"The only way to learn a new programming language is by writing programs in it."</p>
+                    <p class="quote-author">- Dennis Ritchie</p>
+                </div>
+                <div class="quote-card">
+                    <p class="quote-text">"Programming isn't about what you know; it's about what you can figure out."</p>
+                    <p class="quote-author">- Chris Pine</p>
+                </div>
+                <div class="quote-card">
+                    <p class="quote-text">"The most disastrous thing that you can ever learn is your first programming language."</p>
+                    <p class="quote-author">- Alan Kay</p>
+                </div>
+                <div class="quote-card">
+                    <p class="quote-text">"Any fool can write code that a computer can understand. Good programmers write code that humans can understand."</p>
+                    <p class="quote-author">- Martin Fowler</p>
+                </div>
+                <div class="quote-card">
+                    <p class="quote-text">"First, solve the problem. Then, write the code."</p>
+                    <p class="quote-author">- John Johnson</p>
+                </div>
+                <div class="quote-card">
+                    <p class="quote-text">"Code is like humor. When you have to explain it, it's bad."</p>
+                    <p class="quote-author">- Cory House</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses-section" id="courses">
+        <div class="container">
+            <h2 class="section-title">Featured Courses</h2>
+            <div class="courses-container">
+                <div class="course-card">
+                    <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="course-content">
+                        <h3 class="course-title">Web Development Fundamentals</h3>
+                        <p class="course-text">Learn HTML, CSS, and JavaScript to build responsive websites from scratch.</p>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="course-content">
+                        <h3 class="course-title">Python Programming</h3>
+                        <p class="course-text">Master Python from basics to advanced concepts including data analysis and web frameworks.</p>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="course-content">
+                        <h3 class="course-title">Mobile App Development</h3>
+                        <p class="course-text">Create cross-platform mobile applications using React Native and Flutter.</p>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="course-content">
+                        <h3 class="course-title">Data Structures & Algorithms</h3>
+                        <p class="course-text">Essential computer science concepts to ace technical interviews and build efficient software.</p>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="course-content">
+                        <h3 class="course-title">Database Management</h3>
+                        <p class="course-text">Learn SQL, NoSQL, and database design principles for robust applications.</p>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="course-content">
+                        <h3 class="course-title">Git & Version Control</h3>
+                        <p class="course-text">Master collaboration tools and best practices for modern software development.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Coding in Action</h2>
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Team Coding">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1534665482403-a909d0d97c67?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Code Editor">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Programming Setup">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Code on Screen">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Collins</h3>
+                    <p>Collins is a passionate tech educator dedicated to making coding accessible to everyone through clear explanations and practical projects.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="#home">Home</a>
+                    <a href="#quotes">Quotes</a>
+                    <a href="#courses">Courses</a>
+                    <a href="#gallery">Gallery</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Collins</h3>
+                    <p>Email: moseticollins20@gmail.com</p>
+                    <p>Phone: 0703502267</p>
+                    <p>Specializing in: Web Development, Python, Mobile Apps</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Learn Coding with Collins the Tech Boy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add animation to cards when they come into view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all cards for animation
+        document.querySelectorAll('.quote-card, .course-card, .gallery-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
